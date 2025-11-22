@@ -13,8 +13,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-import java.util.Date;
-
 import org.springframework.cglib.core.Local;
 
 @Entity
@@ -34,10 +32,10 @@ public class Training {
     private User user;
 
     @Column(name = "start_time", nullable = false)
-    private Date startTime;
+    private LocalDate startTime;
 
     @Column(name = "end_time")
-    private Date endTime;
+    private LocalDate endTime;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "activity_type_id", nullable = false)
@@ -50,8 +48,8 @@ public class Training {
     private Double averageSpeed;
 
     public Training(User user,
-            Date startTime,
-            Date endTime,
+            LocalDate startTime,
+            LocalDate endTime,
             ActivityType activityType,
             Double distance,
             Double averageSpeed) {
