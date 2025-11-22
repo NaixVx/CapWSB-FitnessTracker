@@ -13,5 +13,4 @@ public class TrainingServiceImpl implements TrainingProvider {
         throw new UnsupportedOperationException("Not finished yet");
     }
 
-
 }
