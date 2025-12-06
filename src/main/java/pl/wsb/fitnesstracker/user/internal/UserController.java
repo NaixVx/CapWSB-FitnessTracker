@@ -17,14 +17,14 @@ import java.util.List;
  * It provides endpoints for retrieving and creating users.
  */
 @RestController
-@RequestMapping(path = "/v1/users/simple", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/v1/users", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 class UserController {
 
     private final UserServiceImpl userService;
     private final UserMapper userMapper;
 
-    @GetMapping
+    @GetMapping("/simple")
     public List<UserDto> getAllUsers() {
         return userService.getAllUsersSummary();
     }
