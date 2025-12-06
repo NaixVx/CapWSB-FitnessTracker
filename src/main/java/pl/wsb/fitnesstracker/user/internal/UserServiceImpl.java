@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import java.util.Comparator;
+
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -49,6 +52,8 @@ class UserServiceImpl implements UserService, UserProvider {
     public List<UserDto> getAllUsersSummary() {
         return userRepository.findAll()
                 .stream()
+                // ensure stable deterministic order by id (nulls first to be safe)
+                .sorted(Comparator.comparing(User::getId, Comparator.nullsFirst(Comparator.naturalOrder())))
                 .map(userMapper::toDto)
                 .collect(Collectors.toList());
     }
